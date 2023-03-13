@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+
+    --fc-heading: #0C3440;
+
+    --fc-label: #00453A;
+    --fc-input: #212529;
+    --fc-outline: #02799D;
+    --fc-placeholder: rgba(73, 80, 87, 0.5);
+    --fc-bordaInput: rgba(73, 80, 87, 0.3);
+    --fc-btn: #FFFFFF;
+    --fc-error: #FFFFFF;
+    --bg-input: #DCE2E9;
+    --bg-error: #F03E3E;
+    --bg-btn: #02799D;
+    --bg-Hoverbtn: #04546d;
+}
+
+body {
+    background-color: #040924;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+body,
+input,
+form button {
+    font-size: 1.6rem;
+}
+
+.container {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+}
+
+main {
+    background: #FFFFFF;
+    box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+    border-radius: .6rem;
+    padding: 4.8rem 6.4rem 6.4rem;
+    max-width: 42.8rem;
+}
+
+form {
+    width: 30rem;
+}
+
+.title {
+    font-size: 3.2rem;
+    line-height: 4rem;
+    color: var(--fc-heading);
+}
+
+form label {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: var(--fc-label);
+    display: block;
+    /* POR PADRÃO É DISPLAY-INLINE = E D.INLINE NAO ACEITA MARGIM BOTTOM */
+    margin-bottom: .8rem;
+    margin-top: 3.2rem;
+}
+
+form input {
+    background: var(--bg-input);
+    border: .1rem solid var(--fc-bordaInput);
+    border-radius: .4rem;
+    padding: 1.6rem;
+    width: 100%;
+}
+
+form input::placeholder {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    color: var(--fc-placeholder);
+}
+
+form input:focus {
+    outline: 2px solid var(--fc-outline);
+}
+
+.input-wrapper+.input-wrapper {
+    margin-top: 1.6rem;
+}
+
+form button {
+    background: var(--bg-btn);
+    border: none;
+    border-radius: .4rem;
+    padding: 1.6rem;
+    margin-top: 3.2rem;
+    width: 100%;
+    font-weight: 700;
+    line-height: 2rem;
+    color: var(--fc-btn);
+    /* NECESSÁRIO O D.FLEX POR CONTA DO GAP */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    transition: background 2s;
+}
+
+form button:hover {
+    background-color: var(--bg-Hoverbtn);
+    cursor: pointer;
+}
+
+/* MODAL */
+.modal.open,
+.alertError.open{
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    inset: 0;
+    /* EQUIVALENTE A LEFT, RIGTH, BOOTOM E  TOP = 0 */
+    display: grid;
+    place-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-wrapper {
+    background: #FFFFFF;
+    box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+    border-radius: .6rem;
+    padding: 4.8rem 6.4rem 6.4rem;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+.modal button {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.modal button:hover {
+    transform: scale(1.2);
+}
+
+/* SCREEN ERROR */
+
+/* .alert-error .open {
+    transform: translateY(0);
+} */
+
+.alertError {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    background-color: var(--bg-error);
+    color: var(--fc-error);
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    padding: .8rem 0;
+
+    visibility: hidden;
+    opacity: 0;
+    /* transform: translateY(30rem);
+    transition: transform .5s; */
+}
